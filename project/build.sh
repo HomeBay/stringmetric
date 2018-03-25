@@ -1,7 +1,7 @@
 #!/bin/sh
 mkdir ./target/cli
 
-cp ./cli/src/main/scala/com/rockymadden/stringmetric/cli/**/*.scala ./target/cli/
+cp ./cli/src/main/scala/com/github/halfmatthalfcat/stringmetric/cli/**/*.scala ./target/cli/
 cp ./cli/target/scala-2.10/*.jar ./target/cli/
 cp ./core/target/scala-2.10/*.jar ./target/cli/
 
