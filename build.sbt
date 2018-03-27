@@ -1,6 +1,6 @@
+import sbt.Keys._
 import sbt._
-import Keys._
-import ReleaseTransformations._
+import sbtrelease.ReleasePlugin.autoImport.ReleaseTransformations._
 
 lazy val commonSettings: Seq[Setting[_]] = Defaults.coreDefaultSettings ++ Seq(
   credentials += Credentials(Path.userHome / ".ivy2" / ".credentials"),
@@ -65,13 +65,17 @@ lazy val root = (project in file("."))
 lazy val core: Project = (project in file("core"))
   .settings(commonSettings)
   .settings(
-    libraryDependencies ++= Seq("org.specs2" %% "specs2-core" % "4.0.2" % "test"),
+    libraryDependencies ++= Seq(
+      "org.specs2" %% "specs2-core" % "2.4.17" % "test"
+    ),
     name := "stringmetric-core"
   )
 
 lazy val cli: Project = (project in file("cli"))
   .settings(commonSettings)
   .settings(
-    libraryDependencies ++= Seq("org.specs2" %% "specs2-core" % "4.0.2" % "test"),
+    libraryDependencies ++= Seq(
+      "org.specs2" %% "specs2-core" % "2.4.17" % "test"
+    ),
     name := "stringmetric-cli"
   ) dependsOn core
