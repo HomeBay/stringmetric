@@ -56,7 +56,8 @@ lazy val commonSettings: Seq[Setting[_]] = Defaults.coreDefaultSettings ++ Seq(
     releaseStepCommand("sonatypeReleaseAll"),
     pushChanges
   ),
-  releasePublishArtifactsAction := PgpKeys.publishSigned.value
+  releasePublishArtifactsAction := PgpKeys.publishSigned.value,
+  scalacOptions ++= Seq("-Xmax-classfile-name", "128")
 )
 
 lazy val root = (project in file("."))
