@@ -38,8 +38,8 @@ lazy val commonSettings: Seq[Setting[_]] = Defaults.coreDefaultSettings ++ Seq(
       Opts.resolver.sonatypeStaging
   ),
   resolvers ++= Seq(DefaultMavenRepository),
-  scalaVersion := "2.12.4",
-  crossScalaVersions := Seq("2.12.4", "2.11.1", "2.10.4"),
+  scalaVersion := "2.13.1",
+  crossScalaVersions := Seq("2.13.1", "2.12.4", "2.11.1", "2.10.4"),
   crossVersion := CrossVersion.binary,
   releaseCrossBuild := true,
   releaseProcess := Seq[ReleaseStep](
@@ -56,8 +56,7 @@ lazy val commonSettings: Seq[Setting[_]] = Defaults.coreDefaultSettings ++ Seq(
     releaseStepCommand("sonatypeReleaseAll"),
     pushChanges
   ),
-  releasePublishArtifactsAction := PgpKeys.publishSigned.value,
-  scalacOptions ++= Seq("-Xmax-classfile-name", "128")
+  releasePublishArtifactsAction := PgpKeys.publishSigned.value
 )
 
 lazy val root = (project in file("."))
@@ -67,7 +66,7 @@ lazy val core: Project = (project in file("core"))
   .settings(commonSettings)
   .settings(
     libraryDependencies ++= Seq(
-      "org.specs2" %% "specs2-core" % "2.4.17" % "test"
+      "org.specs2" %% "specs2-core" % "4.7.1" % "test"
     ),
     name := "stringmetric-core"
   )
@@ -76,7 +75,7 @@ lazy val cli: Project = (project in file("cli"))
   .settings(commonSettings)
   .settings(
     libraryDependencies ++= Seq(
-      "org.specs2" %% "specs2-core" % "2.4.17" % "test"
+      "org.specs2" %% "specs2-core" % "4.7.1" % "test"
     ),
     name := "stringmetric-cli"
   ) dependsOn core
