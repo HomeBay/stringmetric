@@ -31,12 +31,7 @@ lazy val commonSettings: Seq[Setting[_]] = Defaults.coreDefaultSettings ++ Seq(
         </developer>
       </developers>,
   publishMavenStyle := true,
-  publishTo := Some(
-    if (isSnapshot.value)
-      Opts.resolver.sonatypeSnapshots
-    else
-      Opts.resolver.sonatypeStaging
-  ),
+  publishTo := Some("S3 Artifacts" at "s3://homebay-artifacts/ext-releases-local"),
   resolvers ++= Seq(DefaultMavenRepository),
   scalaVersion := "2.13.1",
   crossScalaVersions := Seq("2.13.1", "2.12.4", "2.11.1", "2.10.4"),
